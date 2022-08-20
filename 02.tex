@@ -1,0 +1,744 @@
+
+\section{Základní vlastnosti}
+
+\subsection{n-tá derivace T-funkce}
+
+Lze lehce odvodit následující diferenciální rekurzivní rovnici
+
+\begin{align}
+      \frac{d\mathcal{T}(\xi_k|1)}{dk} = ln(\alpha) 
+      \mathcal{T}(\xi_k | 1)  \frac{d\mathcal{T}(\xi_k
+      \setminus \alpha|1)}{dk}
+\end{align}
+
+ze které lze odvodit vztah
+
+\begin{align}
+      \frac{d\mathcal{T}(\xi_k|1)}{dk} = \prod_{\lambda = 
+      1}^k \left[ \ln(n_{\lambda}) \mathcal{T}(\xi_k \setminus
+      \left[ \bigotimes_{i=1}^\lambda n_i\right] | 1 )\right]
+\end{align}
+
+Pro odvození dalšího vztahu využijeme Faa Di Brunovu formuli
+
+\begin{definition}[Faa Di Brunova formule]
+      Nechť \(f(x)\) a \(g(x)\) jsou holomorfní funkce, 
+      potom jejich Bellovy polynomy mohou být vyjádřeny 
+      pomocí vztahu
+      
+      \begin{eqnarray}
+            D^nf(g(z))=
+            \sum_{\pi(n)} \frac{n!}{k_1! \cdots k_n!} 
+            (D^kf)(g(z))
+            \left(\frac{Dg(z)}{1!}\right)^{k_1} 
+            \cdots \left(\frac{D^ng(z)}{n!}\right)^{k_n}
+      \end{eqnarray}
+      
+      kde \(\pi(n)\) je "partion function" a \(k_1, k_2, ..., k_n\) 
+      jsou hodnoty exponentů jednotlivých faktorů daného čísla n. k 
+      reprezentuje součet \(k_1 + ... + k_n \).
+      
+\end{definition}
+
+aplikujeme-li toto na funkcionální rovnici 
+\(T(\xi_k | x) = T(\alpha | T(\xi_k  | x))\), pro \(k \geq 2\).
+
+\begin{align}
+      D^n \mathcal{T}(\xi_k | x) &= \sum_{\pi(n)}
+      \frac{n!}{k_1! \cdots k_n!} 
+      (D^k \mathcal{T}(\alpha | x))(\mathcal{T}(\xi_k 
+      \setminus \alpha | x)) \prod_{p = 1}^n
+      \left(\frac{D^p\mathcal{T}(\xi_k \setminus \alpha 
+      | x)}{p!}\right)^{k_p} 
+\end{align}
+
+nebo aplikací zobecněného Leibnizova pravidla 
+vytvoříme rekurzivní diferenciální rovnici
+
+\begin{align}
+      \mathcal{T}^{(n)}(\xi_k | x) = \ln(\alpha) \sum_{k=0}^n 
+      \binom{n}{k} \frac{d^{n-k}}{dx^{n-k}}[\mathcal{T}(\xi_k 
+      | x)] \frac{d^{k+1}}{dx^{k+1}}[\mathcal{T}(\xi_k \setminus \alpha| x)] 
+\end{align}
+
+\subsection{Identity Tau funkce}
+
+Pro \(\tau\) funkci platí následující vztahy (\cite{19})
+
+\begin{equation}
+      \tau(z, w) =\left\{ 
+      \begin{array}{ll}
+            \tau(\frac{1}{n^n}, \frac{1}{n^n}) = \frac{1}{n}
+            &\mbox{if} \  n \in \mathbb{Z}^+\\
+            \tau(z, 1) = z &\mbox{if} \  w = 1\\
+            \tau(1, w) = 1 & \mbox{if} \ z=1 \\
+            \tau(0, w) = 0 & \mbox{if} \ z=0, w \neq 0 \\
+            \tau(z, 0) = z & \mbox{if} \ z\neq 0 \\
+            \tau(z, w) \supseteq -\frac{W_n(-ln\|z\|-
+            iArg(z))}{ln\|z\| + i Arg(z)} & \mbox{if} 
+            \ w = z, \|z\| \neq 0,  (z \in \mathbb{R}) \\
+      \end{array} 
+      \right.
+\end{equation}
+
+Zde byly uvedeny identity pro \(\tau\) funkci se dvěma 
+prvky, neboť tyto vztahy lze aplikovat na \(\tau\) funkci
+s více prvky. Prostřednictvím \cite{24}, kde autor dokazuje
+následující sumu
+
+\[\mathcal{T}(a_1, ..., a_n | 1) = \sum_{\substack{k_j \leq 0\\
+1 \leq j \leq n}} \prod_{i = 1}^n \frac{(k_{i-1}\ln(a_i))^{k_i}}{(k_i)!}\]
+
+platí vztah pro \(\forall a_n = \alpha\):
+
+\begin{align}
+      \mathcal{T}(a_1, a_2, ..., \lim_{n \to \infty} a_n | 
+      1) &= \sum_{k=0}^{\infty}\frac{\ln(\alpha)^k}{k!}(k+1)^{(k-1)} 
+      = \\ &= \sum_{k=0}^{\infty} \frac{(\alpha- 1)^k}{k!}\sum_{j=0}^k
+      \left[ {u \atop v} \right]  (j + 1)^{(j-1)}
+\label{PNG1}
+\end{align}
+
+
+\subsection{Derivace Tau funkce}
+
+Tau funkce je určená \(k\) parametry v uspořádané n-tici \(\xi_k\). 
+Existuje mnoho různých způsobů derivovat příslušnou funkci. Jestliže 
+je dána \(\tau(\xi_k)\), potom všechny možnosti derivace určíme vztahem
+
+\begin{align}
+      \prod_{n=1}^k \frac{\partial^{p_n}}{\partial x_n^{p_n}}\tau(\xi_k)
+\end{align}
+
+Za předpokladu, že \(\xi_k \in K \cong \mathbb{R}^k\) lze tyto 
+parciální derivace použít k vytvoření vektorového lineárního
+diferenciálního operátoru, nazývaného gradient
+\[\nabla \tau(a) \ . \ \xi_k = d\tau =  \sum_{k=1}^n 
+\frac{\partial \tau(\xi_k)}{\partial x_k} \righ|_{\xi_k
+= a} \] Dále budeme považovat prvky v \(\xi\) vektoru 
+za konstanty. Derivaci Tau funkce určíme pomocí identity (\ref{4}):
+\[\tau(\xi_k) &= \alpha^{\frac{\mathcal{T}(\xi_k 
+\setminus \alpha | \tau(\xi_k))}{2}}= \|\alpha\|^{\frac{\mathcal{T}(\xi_k
+\setminus \alpha | \tau(\xi_k))}{2}} e^{i\mathcal{T}(\xi_k \setminus
+\alpha | \tau(\xi_k))Arg(\alpha)} \] a pravidla
+
+\begin{align}
+      \left( e^{f(x)}\right)^{(n)} = e^{f(x)} \sum_{k=0}^n 
+      \frac{1}{k!} \sum_{j=0}^k (-1)^j \binom{k}{j} \frac{d^n
+      f(x)^{k-j}}{dx^n} f(x)^j
+\end{align}
+
+jestliže vytvoříme speciální funkci pro snadnější zápis
+
+\begin{align}
+      \psi(\xi_k) = {i\mathcal{T}(\xi_k \setminus \alpha | 
+      \tau(\xi_k))Arg(\alpha)} + \frac{\mathcal{T}(\xi_k 
+      \setminus \alpha | \tau(\xi_k))}{2} \ln\|\alpha\|
+\end{align}
+
+potom
+
+\begin{align}
+      \tau^{(n)}(\xi_k) = \left( e^{\psi(\xi_k)}\right)^{(n)} = 
+      e^{\psi(\xi_k)} \sum_{k=0}^n \frac{1}{k!} \sum_{j=0}^k (-1)^j 
+      \binom{k}{j} \frac{d^n \psi(\xi_k)^{k-j}}{dx^n} \psi(\xi_k)^j
+\end{align}
+
+Nicméně můžeme určit derivaci \(\tau\) funkce pro \(\tau(n)\),
+jelikož lze tento tvar zapsat ve tvaru \(\tau(n) = -\frac{W(-\ln(n))}{\ln(n)}\). 
+
+\begin{theorem}[Empirická metoda]
+      Je dána \(\tau\) funkce ve tvaru \(\tau(n)\), kde
+      \(n \in \mathbb{C}\), potom \(\tau^{(k)}(n)\) činí
+      
+      \begin{align}
+            \tau^{(k)}(n) &= \frac{d^k}{dn^k}\left(  
+            -\frac{W(-\ln(n))}{\ln(n)} \right) = \\
+            & = (-1)^{k+1}   \frac{W^{(k)}(-\ln(n))}{n^k 
+            \ln(n)} + (-1)^{k+1}\sum_{k \geq \lambda \geq 
+            1} \left[ \sum_{\xi = 2}^{k - \lambda +1}c_{\xi}(\lambda, 
+            k) \frac{W^{(\lambda)}(-\ln(n))}{n^k \ln^\xi (n)}  \right] 
+            + \\ &+ (-1)^{k+1}\sum_{k \geq \alpha \geq 1} \left[
+            c_{\alpha}(0, k) \frac{W(-\ln(n))}{n^k \ln^{\alpha+1}(n)} \right]
+      \end{align}
+      
+      kde \(c_{\xi}(k, n)\) jsou \(c\)-koeficienty
+
+      \begin{align}
+            c_{\xi}(n, k+n+1) =\left\{ 
+            \begin{array}{ll}
+                  \sum_{1 \leq i_1 < ... < i_{k+n} \leq n}\frac{(n-1)!}{i_1
+                  ... i_{k+n}}  &\mbox{if} \  \xi = k, k\neq 1\\
+                  (n+1) c_{\xi}(n+1, k+n+1) &\mbox{if} \  \xi < k\\
+                  1 & \mbox{if} \ k=-1 \\
+                  2 & \mbox{if} \ n, k, \xi =1 \\
+                  6 & \mbox{if} \ n, k = 1; \xi = 3
+            \end{array}  \right.
+      \end{align}
+\end{theorem}
+
+Ve výše uvedeném teorému se často nachází n-tá derivace 
+lambertovy w-funkce. V článku  \cite{31} autor uvedl následující formuli:
+
+\begin{align}
+      \frac{d^n W(x)}{dx^n} = 
+      \frac{e^{-W(x)}p_n(W(x))}{(1+W(x))^{2n-1}}
+\end{align}
+
+kde pro polynom \(p_n(x)\) platí následující rekurzivní vztah
+
+\begin{align}
+      p_{n+1}(\omega) = - (\omega + 3 n - 1) p_n 
+      (\omega) + (1+ \omega)p^,_n(\omega) &, n \geq 1
+\end{align}
+
+\begin{theorem}[Analitická metoda]
+      Let us have a function \(_3\tau(\xi_k)\) 
+      around point z, where \(z \in \Omega_0\)
+      \(\omega th\) derivate of tau function with \(\xi_1\) is
+      \begin{align}
+            \frac{d^\omega}{dz^{\omega}}[_3\tau(z)] = 
+            \sum_{n=0}^{\infty} \frac{(n+1)^n}{(n+1)!}
+            \frac{n}{z^{\omega}}\ln^{n-\omega}(z) \mathcal{L}(n, \omega, z)
+      \end{align}
+      
+      where the \( \mathcal{L}\)-parameter \( \mathcal{L}(n, \omega,
+      z)\) is definied for \(0 \leq k-1 \leq \omega\)
+      
+      \begin{align}
+            \mathcal{L}(n, \omega, z) &= \sum_{k=0}^{\omega}\left[ 
+            n^k s(\omega, k) (-1)^{\omega-k+1}\right] + \\ &+ 
+            \sum_{v=0}^{\omega-1}\ln^{v+1}(z) (-1)^{\omega-k+1}s(
+            \omega, k) \frac{(n-1)!}{(n-k-2)!}
+      \end{align}
+      
+            and \(s(\omega, k)\) are stirling numbers 
+            of the first kind. These numbers can be 
+            integral-representating by formula
+            
+      \begin{align}
+            s(\omega, k) = \frac{1}{(k-1)!}\lim_{x \to 0^+}  
+            \frac{d^{k-1}}{dx^{k-1}}\left\{\left[ \frac{\omega-1}{2} 
+            + x + \frac{1}{\pi} \sum_{\mathcal{H}=1}^{n-1}\sin\left(
+            \frac{\mathcal{H}\pi}{\omega}\right)\int_{\mathcal{H}-1}^{\mathcal{H}}
+            \left| \prod_{m=1}^\omega (m-1-\zeta)\right|^{1\ \omega} \frac{d\zeta}{\zeta+x}
+            \right]^n \right\}
+      \end{align}
+\end{theorem}
+
+\begin{proof}
+      \subsection{Asymptotic expansion }
+      We start by setting the value of the tau function for \(H_3(n , k)\)
+      \begin{align}
+            _3\tau(z) &= \mathcal{T}(z | _3\tau(z) \\
+            &= z^{_3\tau(z)} \\
+            &\Longrightarrow \ln(_3\tau(z)) = _3\tau(z) \ln(z) \\
+            &\Longrightarrow -\ln(_3\tau(z)) = W(-\ln(z)) \\
+      \end{align}
+      
+      By modifying the above equation we get the relation
+      
+      \begin{align}
+            _3\tau(z) := -\frac{W(-\ln(z))}{\ln(z)}
+      \label{relation1}
+      \end{align}
+      
+      Using Langrange´s inverse theorem we calculate
+      the coefficients of asymptotic Taylor expansion 
+      for values \(z \in \Omega_0\). Where \(\Omega_0\)
+      is the region with convergent values from this 
+      expansion.  \(_3\tau(z) = \sum_{n=0}^\infty 
+      \frac{(n+1)^n \ln^n(z)}{(n+1)!}\). Now we can 
+      determine the \(\omega\)-th derivate of this series.
+      
+      \begin{align}
+            \mathcal{D}_\omega(_3\tau(z)) = 
+            \sum_{n=0}^\infty \frac{(n+1)^n}{(n+1)!}
+            \frac{d^\omega}{dz^\omega}[\ln^n(z)]
+      \end{align}
+      
+      now our goal is to find the derivate of the
+      function \(\ln^n(z)\) with independent variable n. 
+      \subsection{Formula for \(\omega-th\) derivate 
+      of \(\ln^n(z)\) and integral representation of stirling numbers}
+      
+      \begin{align}
+            D_1(f) &= \frac{1}{x}\ln^{n-1}(x)n \\
+            D_2(f) &= \frac{1}{x^2}\ln^{n-2}(x)n
+            (n-\ln(x)-1 \\
+            D_3(f) &= \frac{1}{x^3}\ln^{n-3}(x)n 
+            (n^2 - 3(n-1) \ln(x) - 3n + 2 \ln^2(x)+2) \\
+            D_4(f) &= \frac{1}{x^4}\ln^{n-4}(x)n 
+            (n^3 - 6(n^2-3n+2)\ln(x)-6n^2 + 11(n-1) 
+            \ln^2(x)+11n-6\ln^3(x)-6) \\
+            D_5(f) &= \frac{1}{x^5}\ln^{n-5}(x)n 
+            (n^4 - 10n^3 + 35(n^2-3n+2)\ln^2(x) + 35n^2 - \\
+            & - 10 (n^3-6n^2 +11n-6)\ln(x)-50(n-1)
+            \ln^3(x) - 50n+24\ln^4(x)+24)\\
+      \end{align}
+      
+      a hypothesis can be deduced from the observations
+      
+      \begin{align}
+            D_\omega(f) = \frac{1}{x^\omega}\ln^{n-\omega}(x)n( 
+            \mathcal{S}_\omega(n) + \mathcal{K}_\omega(\ln(x)))
+      \end{align}
+      
+      where \(\mathcal{S}_n(x)\) and \(\mathcal{K}_n(x)\) are polynomials. Hence
+      
+      \begin{align}
+            \mathcal{S}_n(x) = \sum_{k=0}^n x^k (-1)^{n-k+1}s(n, 
+            k), \ & \mathcal{K}_n(x) = \sum_{k=0}^{n-1}x^k 
+            (-1)^{n-k+1}s(n, k) \frac{(p-1)!}{(p+k+2)!}
+      \end{align}
+      
+      where \(s(n, k)\) are stirling numbers of the first kind. Let \(a =
+      (a_1, a_2, ..., a_n)\) with \(a_k > 0\) for \(0 \leq k\) qleq n and 
+      let \([a]\) denote the rearrangement of the sequence a in an ascending 
+      order, that is, \([a]=(a_{[1]}, a_{[2]}, ..., a_{[n]})\) with \(a_{[1]}
+      \leq a_{[2]} \leq  ... \leq a_{[n]}\). For \(z \in \mathbb{C} \setminus
+      (-\infty, -min\{a_k, 1 \leq k \leq n\}\), the principal branch of the geometric mean
+      
+      \begin{align}
+            G_n(a+z) = \left[ \prod_{k=1}^{n} (a_k +z)\right]^{1/n}
+      \end{align}
+      
+      has the integral representation 
+      
+      \begin{align}
+            G_n(a+z) = A_n(a+z) - \frac{1}{\pi} \sum_{f=1}^{n-1}\sin
+            \frac{f\pi}{n}\int_{a_{[f]}}^{a_{[f+1]}}\left|\prod_{k=1}^{n}
+            (a_k -t) \right|^{1/n}\frac{dt}{t+z},
+      \end{align}
+      
+      where \(a+z=(a_1 + z, a_2+z, ..., a_n+z)\) and
+      
+      \begin{align}
+            A_n(a) = \frac{1}{n}\sum_{k=1}^{n}a_k
+      \end{align}
+      
+      is the arithmetic mean of a. Then it is easy to see
+      
+      \begin{align}
+      \left[ \frac{n-1}{2} +x \frac{1}{\pi} \sum_{f=1}^{n-1} 
+      \sin\frac{f\pi}{n} \int_{f-1}^{f} \left|\prod_{k=1}^{n} 
+      (k-1 -t) \right|^{1/n}\frac{dt}{t+x}\right]^n = 
+      \sum_{k=0}^{n}s(n, k) x^k
+      
+      \end{align}
+      Differentiating \(1 \leq m \leq n\) times with 
+      respect to x on both sides of the equality
+      yields 
+      
+      \begin{align}
+            \frac{d^m}{dx^m}\{\left[ \frac{n-1}{2} +x 
+            \frac{1}{\pi}& \sum_{f=1}^{n-1} 
+            \sin\frac{f\pi}{n} \int_{f-1}^{f} 
+            \left|\prod_{k=1}^{n} (k-1 -t) 
+            \right|^{1/n}\frac{dt}{t+x}\right]^n\} \\
+            & = \sum_{k=m}^n s(n, k) \frac{k!}{(k-m)!}
+            x^{k-m}=\sum_{k=0}^{n}s(n, k+m) \frac{(k+m)!}{k!}
+            x^k.
+      \end{align}
+      
+      Further letting \( x \to 0^+ \) 
+      
+      \begin{align}
+            s(n, m) = \frac{1}{m!} \lim_{x \to 0^+} 
+            \left\{\left[ \frac{n-1}{2} +x \frac{1}{\pi}
+            \sum_{f=1}^{n-1} \sin\frac{f\pi}{n} \int_{f-1}^{f}
+            \left|\prod_{k=1}^{n} (k-1 -t) \right|^{1/n}\frac{dt}{t+x}\right]^n
+            \right\}.
+      \end{align}
+      
+      The proof is thus complete.
+\end{proof}
+
+\subsection{Eta funkce}
+
+Eta funkce je také pomocná funkce, která se 
+zaměřuje na zobecnění problému \(2^{3^x}= x\). 
+Definice \(\eta\) funkce činí
+
+\begin{definition}[Eta funkce]
+      Eta funkce je definována rekurzivními vztahy
+      
+      \begin{align}
+            \eta_x(u) =\left\{ 
+            \begin{array}{ll}
+                  \eta_{x-1}(x^u) &\mbox{if} \  x >0, x 
+                  \in \mathbb{Z} \\
+                  1 & \mbox{if} \ x=0 \\
+                  \frac{ln(\eta_{|x|-1}(u))}{ln(|x|)} & 
+                  \mbox{if} \ x < 0, x \in \mathbb{Z} 
+            \end{array} 
+            \right.
+      \end{align}
+\end{definition}
+
+Jestliže zvolíme notaci \(\tau(\xi_k^*) := \tau[k]\), tuto 
+modifikovanou tau funkci budeme nazývat řadová tau funkce 
+k-tého řádu. Dále platí symetrie \(\tau[x] = \tau[-x-2]\). 
+\(\eta\) funkce splňuje vztahy \(\eta_x(\eta_{-x}(u)) = u\), 
+\(\eta_{-x}(\eta_x(u)) = u\).
+
+\begin{equation}
+      \begin{aligned}
+            \eta_x(\eta_{-x}(u))&=u & x \in \mathbb{Z}^+ \\
+            \eta_x(\eta_y(u)) &= \eta_{|x|+1; y}(u) & x \leq -2, y \geq 2, |x|>|y| \\
+            \eta_x(\eta_y(u)) &= \eta_{-y-1; x}(u) & y \geq 2, x \leq -2, |y|>|x| 
+      \end{aligned}
+\end{equation}
+
+kde \(\eta_{x; y}(u)\) je rozšířena eta funkce.
+Také platí následující identita \(\eta_0 (x) = 1\).
+
+\begin{align}
+      \alpha\eta_x(u) = \log_{x-1}(\eta_{x+1}^\alpha(u)),
+      x < 0, x \in \mathbb{Z}
+\end{align}
+
+\begin{theorem}[\(\eta\) a \(\tau\) funkce]
+      \(\tau\) funkci a \(\eta\) funkci můžeme vložit do vztahů
+      
+      \begin{equation}
+            \begin{aligned}
+                  \tau[x] &= \eta_{-x-1}(\tau[x])\\
+                  \tau[x] &=\eta_{x+1}(\tau[x])
+            \end{aligned}
+      \end{equation}
+
+      což je ekvivalentní vztahu
+      
+      \begin{equation}
+            \begin{aligned}
+                  \tau[x] &= \frac{\ln(\eta_{|x+1|-1}(\tau[x]))}{\ln(|x+1|)} \\
+                  \eta_{x+1}(\tau[x]) &=\eta_{x}((x+1)^{\tau[x]}) \\
+                  \tau[x] &= \eta_x((x+1)^{\tau[x]})
+            \end{aligned}
+      \end{equation}
+      
+      respektive
+      
+      \begin{align}
+            \tau[x] =\left\{ 
+            \begin{array}{ll}
+                  \frac{ln(\eta_{x}(\tau[x]))}{ln(x+1)}, 
+                  &\mbox{if} \  x > 0, x \in \mathbb{Z} \\
+                  \mbox{nedefinováno}, & \mbox{if} \ x={-2, -1, 0} \\
+                  \frac{ln(\eta_{-x-2}(\tau[x]))}{ln(|x+1|)}
+                  & \mbox{if} \ x < 0, x \in \mathbb{Z} 
+            \end{array} 
+            \right.
+      \end{align}
+\end{theorem}
+
+Tau funkce je ve většině svých bodů velice obtížně řešitelná.
+Přesné hodnoty funkce \(\tau[x]\), byly zjištěny pouze pro pár
+hodnot. Hodnotu Tau funkce můžeme určit v bodě x = 1, pro \(\tau[x]\).
+Potom pro \(x = 1\) vznikne rovnost \(2^{\tau[1]}=\tau[1]\), kterou budeme řešit
+
+\begin{equation}
+      \begin{aligned}
+            2^{\tau[1]}&=\tau[1] \\
+            &\Longrightarrow \ln(2)\tau(1)=\ln(\tau[1]) \\
+            &\Longrightarrow \ln(2)=\ln(\tau[1])\tau[1]^{-1} 
+      \end{aligned}
+      \label{3}
+\end{equation}
+
+Platí vztah \(\tau[1]^{-1}=e^{-ln(\tau[1])}\), potom
+
+\begin{equation}
+      \begin{aligned}
+            &\Longrightarrow \ln(2)=\ln(\tau[1]) e^{-\ln(\tau[1])}\\
+            &\Longrightarrow -\ln(2)=-\ln(\tau[1])e^{-\ln(\tau[1])} \\
+            &\Longrightarrow W(-\ln(2))=-\ln(\tau[1]) \\
+            &\Longrightarrow e^{-W(-\ln(2))}=\tau[1]
+      \end{aligned}
+      \label{8}
+\end{equation}
+
+Lambertova funkce implikuje identitu \(W(x) e^{W(x)}= x\), 
+kterou můžeme aplikovat a získat 
+
+\begin{equation}
+      \begin{aligned}
+            & \tau[2] = - \frac{W_n(-\ln(2))}{\ln(2)}, n \in \mathbb{Z}
+      \end{aligned}
+      \label{5}
+\end{equation}
+
+také ji můžeme určit v bodě \(x = 0\), pro \(\tau[x]\). Vytvoříme
+rovnici \(\tau[0] = \frac{\ln(\eta_0(\tau[0])}{\ln(1)}\), tato rovnice
+nemá žádné řešení, jelikož \(\ln(1) = 0\), potom dělíme nulou. Vložíme-li 
+tyto hodnoty do tabulky
+
+\begin{equation}
+      \begin{aligned}
+            \tau[-3] &= - \frac{W_n(-ln(2))}{ln(2)}, n \in \mathbb{Z}  \\
+            \tau[-2] &= \mbox{nedefinováno} \\
+            \tau[-1] &= \mbox{nedefinováno} \\
+            \tau[0] &= \mbox{nedefinováno} \\
+            \tau[1] &= - \frac{W_n(-ln(2))}{ln(2)}, n \in \mathbb{Z} \\
+            \tau[2] &= 0,5065540825966331455581759057111399... \pm 
+            1,2189358525336399148148731094749i... \\
+            \tau[3] &= 0,32105418929935175... \pm 0.888704454244537511i... \\
+            &= 2.271038395340923833869... - 1.1217504950205431i...
+      \end{aligned}
+\end{equation}
+
+\subsection{Lagrangeova věta o inverzi}
+
+Nechť z je definována jako funkce pro \(w\) vyjádřena parametrem 
+\(\alpha\), kde \(z = w + \alpha \phi(z)\). Lagrangeova věta o 
+inverzi je také nazývána lagrangeovou expanzí, která je založena 
+na funkci pro z, která může být zapsána jako mocninná řada v okolí
+\(\alpha\), které konverguje pro dostatečně malé \(\alpha\) a má tvar
+
+\begin{align}
+      F(z) =& F(w) + \frac{\alpha}{1}\phi(w)F^,(w) + \frac{\alpha^2}{1
+      \times 2}\frac{\partial}{\partial w}\{[\phi(w)]^2F^,(w)\} \\
+      & + ... + \frac{\alpha^{n+1}}{(n+1)!}\frac{\partial^n}{\partial
+      w^n}\{[\phi(w)]^{n+1}F^,(w)\} \\
+      & + ...
+\end{align}
+
+
+Věta může být vyjádřena následovně.
+
+\begin{theorem}
+      Nechť \(f\) je analytická funkce, \(f^,(x_0) \neq 0\) pro 
+      \(x_0 \in \mathbb{C}\), potom \(f^{-1}\) je dána vztahem
+      
+      \begin{equation}
+            f^{-1}(y) = x = x_0 + \sum_{n \geq 1}\lim_{x \to x_0}
+            \partial_x^{n-1}\left[ \frac{x - x_0}{f(x) - f(x_0)}\right]^n
+            \frac{(y-f(x_0))^n}{n!}
+      \end{equation}
+      \label{A}
+\end{theorem}
+
+\begin{proof}
+      Začneme zapsáním si 
+      
+      \begin{align}
+            g(v) = \int \delta(y f(z) - z 
+            + x) g(z) (1-y f'(z)) \, dz
+      \end{align}
+      
+            Jestliže zapíšeme delta 
+            funkci jako integrál získáme
+            
+      \begin{align}
+            g(v) & = \iint \exp(ik[y f(z) -
+            z + x]) g(z) (1-y f'(z)) \, 
+            \frac{dk}{2\pi} \, dz =\\[10pt]
+            & =\sum_{n=0}^\infty \iint \frac{(ik
+            y f(z))^n}{n!} g(z) (1-y f'(z)) e^{ik(x-
+            z)}\, \frac{dk}{2\pi} \, dz =\\[10pt]
+            & =\sum_{n=0}^\infty \left(\frac{\partial}{
+            \partial x}\right)^n\iint \frac{(y f(z))^n}{n
+            !} g(z) (1-y f'(z)) e^{ik(x-z)} \, \frac{dk}{
+            2\pi} \, dz
+      \end{align}
+      
+      Integrál nad k pak dává \(\delta(x-z)\), takže máme
+      
+      \begin{align}
+            g(v) & = \sum_{n=0}^\infty \left(\frac{\partial}{
+            \partial x}\right)^n \left[ \frac{(y f(x))^n}{n!} 
+            g(x) (1-y f'(x))\right] =\\[10pt]
+            & =\sum_{n=0}^\infty \left(\frac{\partial}{\partial
+            x}\right)^n \left[ 
+            \frac{y^n f(x)^n g(x)}{n!} -
+            \frac{y^{(n+1)})}{(n+1)!}\left\{ 
+            (g(x) f(x)^{n+1})' - g'(x) f(x)^{n+
+            1}\right\} \right]
+      \end{align}
+      
+      přeuspořádáním součtu a zrušení několika výrazů získáme
+      
+      \begin{align}
+            g(v)=g(x)+\sum_{k=1}^\infty\frac{y^k}{k!}
+            \left(\frac\partial{\partial x}\right)^{k-1}
+            \left(f(x)^kg'(x)\right)
+      \end{align}
+      
+      jestliže je g identita
+      
+      \begin{align}
+            v=x+\sum_{k=1}^\infty\frac{y^k}{k!}\left(\frac\partial{
+            \partial x}\right)^{k-1}\left(f(x)^k\right)
+      \end{align}
+ \end{proof}
+ 
+ Potom tedy \(\tau(\xi_k) = \mathcal{T}(\xi_k | \tau(\xi_k))\), 
+ přeformulujeme do tvaru \(\mathcal{T}(\xi_k | \tau(\xi_k)) - 
+ \tau(\xi_k) = 0\), nechť \(\mathcal{T}(\xi_k | \tau(\xi_k)) -
+ \tau(\xi_k) \equiv f(x)\), tedy \(f(x) = 0\), aplikujeme-li 
+ teorém (\ref{A}) pro \(y = 0\), potom
+ 
+ \begin{equation}
+      f^{-1}(0) = x = x_0 + \sum_{n \geq 1}\lim_{x \to x_0}
+      \partial_x^{n-1}\left[ \frac{x - x_0}{f(x) -
+      f(x_0)}\right]^n \frac{(-f(x_0))^n}{n!}
+\end{equation}
+
+toto můžeme aplikovat na vztah \(f(x) = 0, f^{-1}(0) = x\), tedy
+
+\begin{align}
+      f^{-1}(0) &= x_0 + \sum_{n \geq 1}\lim_{x \to x_0}
+      \partial_x^{n-1}\left[ \frac{x - x_0}{\mathcal{T}(\xi_k
+      | x) - x - \mathcal{T}(\xi_k | x_0) - x_0} \right]^n 
+      \frac{(-\mathcal{T}(\xi_k | x_0) - x_0)^n}{n!} \\
+      &= \sum_{n \geq 1}\lim_{a \to 0} \partial_{a}^{n-1}\left[
+      \frac{a}{\mathcal{T}(\xi_k | a) - a - \mathcal{T}(\xi_{k}
+      \setminus \omega | 1)} \right]^n \frac{(-\mathcal{T}(\xi_{k-1} | 1))^n}{n!} \\
+\end{align}
+
+z tohoto lze odvodit následující vztah pro tau funkci
+
+\begin{corollary}
+      \(\tau\) funkce může být vyjádřena lagrangeovou expanzí ve tvaru:
+      \begin{align}
+            \tau(\boldsymbol{\xi_k}) = \sum_{n \geq 0} 
+            \frac{(-\mathcal{T}(\boldsymbol{\xi_k} \setminus
+            \omega |1))^n}{n!}\zeta^*(\boldsymbol{\xi_k})
+      \end{align}
+      
+      kde \(\zeta^*(\boldsymbol{\xi_k})\) je operátor 
+      zeta, který je definován vztahem
+            
+      \begin{align}
+            \zeta^*({\boldsymbol{\xi_k}}) &= \lim_{\zeta \to
+            0}\frac{d^{n-1}}{d\zeta^{n-1}} \left[ \frac{\zeta}{
+            \mathcal{T}(\boldsymbol{\xi_k} | \zeta) - \mathcal{T}(
+            \boldsymbol{\xi_k}\setminus \omega | 1) -\zeta} \right]^n
+            =\\ &= n!\lim_{\zeta \to 0} \zeta \left( \frac{1}{\mathcal{T}(
+            \boldsymbol{\xi_k} |\zeta) - \mathcal{T}(\boldsymbol{\xi_k} 
+            \setminus \omega|1) - \zeta} \right)^n
+      \end{align}
+      
+      úpravou získáme rovnici
+      
+      \begin{align}
+            \tau(\boldsymbol{\xi_k})= \sum_{n \geq 0} (-\mathcal{T}(
+            \boldsymbol{\xi_k} | 0))^n\lim_{\omega \to 0} \frac{\omega^{n+1}}{(
+            \mathcal{T}(\boldsymbol{\xi_k} |\omega) - \mathcal{T}(\boldsymbol{
+            \xi_k} | 0) - \omega)^n}
+      \end{align}
+\end{corollary}
+
+jestliže se budeme věnovat opět našemu problému \(2^{3^x}=x\),
+potom pouze dosadíme a využijeme substituci zeta operátoru:
+
+\begin{equation}
+      \tau(2, 3) = \sum_{n \geq 1} \zeta^*(\omega) \frac{(-2)^n}{n!} 
+\end{equation}
+
+potom zeta operátor
+
+\begin{align}
+      \zeta^*(\omega) = \lim_{\omega \to 0} \partial_{\omega}^{n-1}\left[ 
+      \frac{\omega}{2^{3^\xi} - \omega - 2} \right]^n 
+\end{align}
+
+Newtonovou metodou můžeme určit numerické řešení \(\tau(2, 3)\) = 
+\(0,5065540825966... \) \ \(\pm 1,2189358525336i...\) Samozřejmě 
+lze získat více řešení, jelikož rovnice \(2^{3^x}=x\) s řešením 
+\(x := \tau(2, 3)\) je podmnožinou řešení \(\tau(2, 3, 2, 3)\)
+pro rovnici \(T(2, 3, 2, 3 | x) = x\), kde \(x :=\tau(2, 3, 2, 3)\).
+Toto je důvod vytvoření nové notace tau funkce, tedy \(\tau_n(\xi_k)\) 
+[n je počet cyklů opakování \(\xi_k\)], přičemž zápisem \(\tau(\xi_k)\)
+rozumíme všechny řešení pro n periodický vektor \(\xi_k\).
+
+\begin{definition}[tau funkce n-tého cyklu]
+      Tau funkce n-tého cyklu rozumíme \(\tau_n(\xi_k) := 
+      \tau(\xi_k, \xi_k, ..\mbox{(n-times)}. , \xi_k)\). A 
+      zároveň notace implikuje 
+      \[\tau(\xi_k) = \lim_{n\to \infty}\tau_{n!}(\xi_k).\]
+\end{definition}
+
+Výše uvedená definice zavádí velice důležitou větu
+
+\begin{theorem}[Podmnožinou tau funkce n. cyklu]
+      Jestliže \(n | m\), potom platí
+      \[\tau_n(\xi_k) \subseteq \tau_m(\xi_k)\]
+\end{theorem}
+
+Jestliže číslo n je dělitel čísla m, potom tau funkce
+n-tého cyklu je podmnožinou tau funkce m-tého cyklu. 
+Z tohoto lze odvodit důvod proč se v definici vyskytuje
+faktorial, jelikož faktorial \(m!\) je dělitelný všemi 
+čísly menšími nebo rovno \(m\). Počet dělitelů čísla lze
+odvodit vztahem
+\[\sigma_0(n) = \prod_{i=1}^{\omega(n)}(a_i+1)\]kde 
+\(\omega(n)\) je hodnota počtu unikátních prvočísel v
+rozkladu a \(a_i\) jsou mocniny těchto prvočísel.
+
+\subsection{Tau funkce s nekonečným xi-vektorem}
+
+Jestliže definujeme vztah \(|\xi_k|=k\), potom exponenciální věže
+definujeme \(T(\lim_{n \to \infty} \xi_n | x) = y\), kde \(|\xi_n|
+= \lim_{n\to \infty} n\). Využijeme Gelfond-Schneiderovu a 
+Hermite-Lindemannovu větu \cite{18} \cite{19} \cite{20}
+
+\begin{theorem}
+      Považujeme-li Schanuelovu hypotézu \cite{21} za
+      pravdivou, potom \(\alpha \neq 0\) a z je komplexní
+      číslo. \(\alpha\), \(\beta\) je algebraické a z iracionální.
+      Platí-li \(\alpha^{\beta^z}=z\), potom z je transcendentální.
+\end{theorem}
+
+\begin{theorem}[Gelfond-Schneider]
+      Předpokládejme \( \alpha\) a \(\beta\) jsou algebraická 
+      čísla, kde \(\alpha \neq 0, \alpha \neq 1\), a \(\beta \in 
+      \mathbb{R}\setminus \mathbb{Q}\), potom \(\alpha^{\beta}\) 
+      je transcendentální.
+\end{theorem}
+
+\begin{theorem}[Hermite-Lindemann]
+      Číslo \(e^\alpha\) je transcendentální pro libovolné
+      nenulové číslo \(\alpha\). 
+\end{theorem}
+
+\begin{conjecture}[Schanuelova hypotéza \cite{23}]
+      Nechť \(a_1, ..., a_n\) jsou \(\mathbb{Q}\)-lineárně nezávislá
+      komplexní čísla. Potom \(td_{\mathbb{Q}}(a_1, e^{a_1},.
+      .., a_n, e^{a_n}) \leq n\).
+\end{conjecture}
+
+\begin{definition}[Nekonečné exponenciální věže]
+      Funkce \(\lim_{n\to \infty}\tau_n(\alpha) := h(\alpha)\) 
+      je limita sekvence konečných věží \(x, x^x, x^{x^x}\), ...,
+      pro \(x > 0\), sekvence je konvergentní právě tehdy, kdy (\cite{18})
+      \[0.06598... = e^{-e} \geq x \geq e^{e^{-1}}=1.44466...,\]
+\end{definition}
+
+V tomto případě lze nekonečnou exponenciální věž formulovat
+\(h(x) = x^{h(x)}\). Potom \(y = h(x)\) je řešení pro rovnici 
+\(x^y = y; \ \mbox{a}; \ x = y^{\frac{1}{y}}\). Podle Hermite-Lindemannovy 
+věty, která říká, že jestliže A je nenulové algebraické číslo, potom \(e^A\)
+je transcendentální číslo. Jestliže A leží v intervalu \((-e, e^{-1})\), 
+potom \(h(e^A) \in \mathbb{T}\), [Zvolíme notaci, kde \(\mathbb{T}\) je 
+množina transcendentálních čísel a \(\mathbb{A}\) je množina algebraických 
+čísel.]. Potom můžeme ze získaných znalostí vytvořit větu, která určuje 
+hodnotu tau funkce pro nekonečné xi-vektory:
+
+\begin{theorem}
+      Nechť máme \(\tau(\lim_{n \to \infty} \xi_n) = 
+      \tau(\alpha) := y \in \mathbb{R}\), kde \(y \in 
+      \langle e^{-e} e^{e^{-1}} \rangle\), potom
+      \[y = - \frac{W_m(- \ln(n))}{\ln(n)}\]
+\end{theorem}
+
+Derivace \(h(x)\), kde \(\alpha = a_1, a_2, ...\), určíme (\ref{PNG1})
+
+\begin{align}
+      T^,(a_1, a_2, ..., \lim_{n \to \infty} a_n | 1) &= 
+      \sum_{k=0}^{\infty} \frac{(k-1)^{(k-1)}\left(  
+      \frac{k-1}{k+1} + \ln(k+1) \right) \ln^k(\alpha)}{k!} +\\
+      &+ \frac{(k+1)^{(k-1)}\ln(\ln(\alpha)) \ln^k(\alpha)}{k!} - \\
+      &-\frac{(k+1)^{(k-1)}\Gamma(k+1)\psi^{(0)}(k+1) \ln^k(\alpha)}{(k!)^2}
+\end{align}
