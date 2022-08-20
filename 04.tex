@@ -1,0 +1,35 @@
+\section{Zobecnění tau funkce}
+
+Vytvoříme matematický aparát pro vyjádření kořenů
+rovnice \(T(\xi_k | x) =x\). Tuto funkci pojmenujeme
+Super-tau funkcí, jejíž notace činí \(\mathbb{T}(\xi_k | x)\).
+
+\begin{definition}[Super-Tau funkce]
+      Super-Tau funkce je zobecnění \(\tau\)-funkce s \(\xi\) 
+      vektorem. Můžeme ji charakterizovat následující identitou
+      \[\mathbb{T}(\xi_k | \mathcal{T}(\xi_k | x) - x ) = x\]
+      kde \(\xi_k = (a_1, a_2, ..., a_n), a_1, a_2, ..., a_n \in \mathbb{C}\).
+\end{definition}
+
+Pro Super-tau funkci platí následující vztahy
+
+\begin{corollary}
+      Jestliže \(\mathbb{T}(\xi_k | x)\) je super-tau 
+      funkce, potom dle výše uvedené definice platí
+      \begin{align}
+            \mathbb{T}(\xi_k |0) &=\tau(\xi_k) \\
+            x\mathbb{T}(e^{-x} | 0) &= W(x) \\
+            \mathbb{T}(n, m) &= - \frac{W(-n^{-m}
+            \ln(n))}{\ln(n)} - m
+      \end{align}
+\end{corollary}
+
+Prostřednictvím Langrangeovy expanze 
+odvodíme následující expanzi Super-Tau funkce
+
+\begin{align}
+      \mathbb{T}(\xi_k | x) = \sum_{n\geq 1}(x -
+      \mathcal{T}(\xi_k | 0))^n \lim_{\omega \to 
+      0}  \frac{\omega^{n+1}}{(\mathcal{T}(\xi_k 
+      | \omega) - \mathcal{T}(\xi_k | 0) - \omega)^n}
+\end{align}
