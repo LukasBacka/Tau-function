@@ -1,0 +1,224 @@
+\section{U funkce}
+
+U funkce je analytická kontinuální funkce 
+
+\begin{definition}[U funkce]
+      U funkcí rozumíme vztah
+      
+      \begin{align}
+            U(j) = \sum_{n=2}^{\infty} \frac{1}{\eta_n(j)}
+      \end{align}
+      
+      kdy \(U(j)\) je U funkce s j. řádem.
+\end{definition}
+
+Tuto funkci můžeme aproximovat vztahem \(U(j) 
+\cong 10^{-0.28074j + 0.1229} := \tilde{U}(j)\) 
+pro \(j \in \mathbb{R}\). Derivace U-funkce činí
+
+\begin{align}
+      U'(j) = - \sum_{n=2}^\infty \frac{1}{\eta^2_n(j)}
+      \prod_{r=2}^n \left[\eta_{(r; n)}(j) \ln(r) \right]
+\end{align}
+
+\begin{table}[h!]
+      \centering
+      \begin{tabular}{||c c c c||} 
+            \hline
+            k & U(k) & \(\tilde{U}(k)\) & G(k) \\ [0.5ex] 
+            \hline\hline
+            -5 & 33,6216... & 33.6202...& 1  \\
+            -4 & 17,61436...& 17.6141... & 1 \\
+            -3 & 9,59052... & 9.22826... & 1 \\
+            -2 & 5,511116... & 4.83482... & 1 \\
+            -1 & 3,24746 & 2.53303... & 1 \\
+            0  & 1,625...  & 1.327089... & 21  \\
+            1 & 0,625... & 0.695280... & 21 \\
+            2  & 0,251953...  & 0.364267... & \(12 \ 958 \ 345\)  \\
+            3 & 0,125... & 0.190845... & 5 \\
+            4  & 0,0625... & 0.0999862...  & 20  \\
+            5  & 0,03125... & 0.0523842... & 68  \\
+            6  & 0, 015625... & 0.0274448...  & 213  \\ [1ex] 
+            \hline
+      \end{tabular}
+\end{table}
+
+Vložíme-li hodnoty U-funkce a 
+aproximace U-funkce do tabulky získáme
+
+\newpage
+
+\begin{definition}[G-funkce]
+      \(G\) funkce je počet nul v první řadě nul hodnoty
+      j-té U funkce. například \(G(0.25000...) = \infty,\)
+      \(G(1.0000012) = 5\), \(G(0.00020001) = 3\)
+\end{definition}
+
+\subsection{Error v aproximaci U-funkce}
+
+Pro určení chybovosti funkce \(\tilde{U}(j)\), která 
+je aproximací pro U-funkci zvolíme několik bodů a určíme
+absolutní hodnotu rozdílu hodnot obou funkcí, přičemž budeme
+rozumět notaci \(\varepsilon(j)\) chybovost v bodě j a 
+\(\varepsilon(j\%)\) chybovost v procentech. Potom absolutní
+error určíme vztahem
+
+\begin{align}
+      \varepsilon(j) = | U(j) - \tilde{U}(j) 
+      |; \  & \  U(j) \neq 0 
+\end{align}
+
+Relativní error můžeme určit
+
+\[\eta = \frac{\varepsilon(j) }{|U(j)|} = \frac{ | U(j) -
+\tilde{U}(j) |}{|U(j)|} = \left| 1 - 
+\frac{\tilde{U}(j)}{U(j)}\right|\]
+tedy
+
+\[\varepsilon(j\%) = 100 \% \times 
+\eta = 100\% \left| 1 - \frac{\tilde{U}(j)}{U(j)}\right|\]
+Vložíme-li hodnoty do tabulky
+
+\begin{table}[h!]
+      \centering
+       \begin{tabular}{||c c c c c c||} 
+             \hline
+             k & U(k) & \(\tilde{U}(k)\) &  \(\varepsilon(j)\)  & \(\eta\) & \(\varepsilon(j\%)\)  \\ [0.5ex] 
+            \hline\hline
+            -5 & 33,6216... & 33.6202... & 0.0014 & 0.00004164 & 0.00416399 \% \\
+            -4 & 17,61436...& 17.6141... & 0.00026 & 0.00001476 & 0.001476 \%\\
+                  -3 & 9,59052... & 9.22826...& 0.36226 & 0.03777272 & 3.777272 \% \\
+            -2 & 5,511116... & 4.83482...&  0.676296 & 0.12271489 & 12.271489 \% \\
+            -1 & 3,24746 & 2.53303... & 0.71443 & 0.21999655 & 21.999655 \% \\
+            0  & 1,625...  & 1.327089..& 0.297911 & 0.18332985 & 18.332985 \% \\
+                  1 & 0,625... & 0.695280...& 0.07028 & 0.112448 & 11.2448 \% \\
+            2  & 0,251953...  & 0.364267... & 0.112314 & 0.44577362 & 44.577362 \% \\
+            3 & 0,125... & 0.190845...  & 0.065845 & 0.52676 & 52.676 \% \\
+            4  & 0,0625... & 0.0999862...  & 0.0374862 & 0.5997782 & 59.97782 \%\\
+            5  & 0,03125... & 0.0523842... & 0.0211342 & 0.6762944 & 67.62944 \% \\
+            6  & 0,015625... & 0.0274448...  & 0.0118198 & 0.7564672 & 75.64672 \% \\ [1ex] 
+            \hline
+      \end{tabular}
+\end{table}
+
+z tabulky můžeme určit, že přesnost aproximace U funkce
+v bodě k se snižuje se zvyšující hodnotou k.
+
+\subsection{Obsah plochy U funkce na kladné straně}
+
+Obsah U funkce na kladné straně je jistě konečný. Tuto plochu
+budeme nazývat plocha G \(:=\mathbb{G}\). Plocha \(\mathbb{G}\) 
+může být aproximována aproximací \(\tilde{U}(j)\),
+
+\begin{align}
+      \mathbb{G} &\cong \int_0^\infty \tilde{U}(j) dj =\\
+      &= \int_0^\infty  10^{-0.28074j + 0.1229} dj =\\
+      &= \int_0^\infty e^{-\frac{14037 \ln(10)}{50 \ 000}s -
+      \frac{1229 \ln(10)}{10 \ 000}} ds= \\
+      &= \frac{10^{4.1229}\times 5}{14037 \ln(10)} =\\
+      &\cong 2.05296
+\end{align}
+
+potom
+
+\begin{align}
+      \mathbb{G} &= \int_0^{\infty} U(s) ds =\int_0^\infty 
+      \sum_{n=2}^{\infty} \frac{1}{\eta_n(s)} ds =\\
+            &=\sum_{n=2}^{\infty} \int_0^\infty \frac{1}{\eta_n(s)}
+      ds = \sum_{n=2}^\infty [J_n(s) ]_{s=0}^{s=\infty} =\\
+      &= \sum_{n=2}^\infty \lim_{s \to \infty} J_n(s) - J_n(0) 
+      = -\sum_{n=2}^\infty J_n(0) 
+\end{align}
+
+kde
+
+\[J_n(s) = \int \frac{1}{\eta_n(s)} ds\]
+
+například 
+
+\begin{align}
+      J_2(s) &= -\frac{2^{-s}}{\ln(2)} + 
+      c & J_2(0) = -\frac{1}{ln(2)} = -1.4427... \\
+      J_3(s) &= \frac{Ei(-3^s \ln(2))}{\ln(3)} 
+      + c & J_3(0)=  \frac{Ei(-ln(2))}{ln(3)} = -0.344681 \\
+      J_4(s) &= \mbox{??} & J_4(0) = \mbox{??} \\
+      \lim_{\xi \to \infty} J_{k}(\xi) &= 0
+\end{align}
+
+Bohužel \(J_4(x)\) nemůže být zapsána prostřednictví 
+elementárních funkcí, takže nemůže být lehce zjištěna
+hodnota pro \(J_x(0)\), pro \(x \geq 4\).
+      
+\begin{question}
+      Jaká je hodnota následujícího výrazu?
+      \[-\sum_{n=2}^\infty J_n(0) \]
+\end{question}
+
+\subsection{U funkce v \(\mathbb{C}\)}
+
+\(U(j)\) pro \(j \in \mathbb{R} \) má vlastnosti 
+exponenciální funkce, která může být aproximována 
+exponenciální funkcí \(10^{-0.28074j + 0.1229}\), 
+bohužel pro body \(s \in \mathbb{C} \setminus 
+\mathbb{R}\) v \(U(s)\) je tato aproximace 
+nevyužitelná. U-funkce splňuje následující vztah
+\(U(s) = \overline{U(\overline{s})}\). Toto implikuje,
+že je funkce symetrická podle reálné osy, jinými slovy
+U-funkce je sudá. Potom kladnou principiální částí
+U-funkce myslíme kladnou část reálné roviny oboru 
+hodnot funkce U a zápornou principiální částí část
+záporné reálné osy. Vytvořili by jsme-li graf 
+imaginárních částí prvků \(p, p \in H_U\) všimli
+by jsme si tzv. skokových bodů.
+
+\begin{definition}[Skokové body]
+      Skokovými bod rozumíme body \(J = U(j),\) pro které platí
+      
+      \begin{align}
+            \frac{d}{dj}\left(\Re(U(j))\right) =0  
+      \label{M1}
+      \end{align}
+
+      nbo
+      
+      \begin{align}
+             \frac{d}{dj}\left(\Im(U(j))\right) = 0
+      \label{M2}
+      \end{align}
+      
+      Skokové body splňující (\ref{M1}) nazýváme reálné 
+      skokové body a (\ref{M2}) Imaginární skokové body.
+      
+\end{definition}
+
+Tyto body se vyznačují extrémní změnou průběhu funkce. 
+Zatím byl nalezen pouze jeden reálný a imaginární skokový
+bod na kladné principiální části U-funkce, toto implikuje 
+existenci těchto bodů i na záporné principiální části 
+U-funkce. Imaginární skokové body značíme \(J(Im)\) a 
+reálné skokové body \(J(Re)\), potom \(U(J(Re))\) a 
+\(U(J(Im))\) jsou hodnoty těchto bodů.
+
+\begin{table}[h!]
+      \centering
+      \begin{tabular}{||c c||} 
+            \hline
+            J(Re) & U(J(Re)) \\ [0.5ex] 
+            \hline\hline
+            0.0001+1.8i & \(-5.14473 \times 10^{39} -9.83268 \times 10^{39} i\)  \\
+            0.0001 - 1.8i & \(-5.14473 \times 10^{39} +9.83268 \times 10^{39} i\) \\ [1ex] 
+            \hline
+      \end{tabular}
+\end{table}
+
+\begin{table}[h!]
+      \centering
+      \begin{tabular}{||c c||} 
+            \hline
+            J(Im) & U(J(Im)) \\ [0.5ex] 
+            \hline\hline
+            1.8i & \(-4.64309 \times 10^{39} -1.61765  \times 10^{40} i\)  \\
+            -1.8i & \(-4.64309 \times 10^{39} +1.61765  \times 10^{40} i\)  \\ [1ex] 
+            \hline
+      \end{tabular}
+\end{table}
